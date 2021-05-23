@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"fmt"
+	"github.com/pymba86/delity/internal/core"
 	"net/http"
 	"os"
 	"sync"
@@ -46,7 +47,7 @@ type Engine struct {
 	state int
 
 	// Services contains all the application's services
-	services *Services
+	services *core.Services
 
 	// Server hold a pointer to the http server
 	server *http.Server
@@ -84,13 +85,14 @@ func New() (*Engine, error) {
 	// Create a global application context
 	ctx, cancel := context.WithCancel(context.Background())
 
-	// Create a router with all handlers
-	mux := NewRouter(
-		FrontendMuxHandleFunc(config),
-		BackendMuxHandleFunc(),
-		GraphQLMuxHandleFunc(config))
+	// Create all dependencies services
+	services := core.NewServices(database)
 
-	services := NewServices(database)
+	// Create a router with all handlers
+	mux := NewRouter(logger,
+		FrontendMuxHandleFunc(config),
+		BackendMuxHandleFunc(services),
+		GraphQLMuxHandleFunc(services, logger))
 
 	// Build the engine struct with all dependencies
 	engine := &Engine{
@@ -119,7 +121,7 @@ func (engine *Engine) Listen(server *http.Server) {
 
 	logger := engine.Log.WithPrefix("http.server")
 
-	logger.WithFields(log.Fields{"port": server.Addr}).Infof("staring http server")
+	logger.WithFields(log.Fields{"port": server.Addr}).Infof("starting http server")
 
 	listen := func() error {
 		if err = server.ListenAndServe(); err != http.ErrServerClosed {

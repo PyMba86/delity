@@ -1,0 +1,26 @@
+# .gqlgen.yml delity
+#
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema:
+  - internal/graphql/schema/*.graphql
+
+struct_tag: json
+
+exec:
+  filename: internal/graphql/graphql_gen.go
+  package: graphql
+
+model:
+  filename: internal/graphql/models_gen.go
+  package: graphql
+
+autobind:
+  - github.com/pymba86/delity/internal/entity
+
+models:
+  ID:
+    model:
+      - github.com/99designs/gqlgen/graphql.IntID
+      - github.com/99designs/gqlgen/graphql.ID
