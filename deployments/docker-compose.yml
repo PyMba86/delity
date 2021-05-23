@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    container_name: delity_db
+    restart: unless-stopped
+    command: [ '--default-authentication-plugin=mysql_native_password' ]
+    environment:
+      MYSQL_USER: delity
+      MYSQL_DATABASE: delity
+      MYSQL_PASSWORD: delity
+      MYSQL_ROOT_PASSWORD: delity
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"

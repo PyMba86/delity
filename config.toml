@@ -1,0 +1,14 @@
+[server]
+port = "3333"
+root_dir = "./"
+static_dir = "./web"
+
+[database]
+name = "delity"
+username = "delity"
+password = "delity"
+host = "127.0.0.1"
+port = "3306"
+
+[log]
+level = "trace"
