@@ -91,12 +91,12 @@ func loadConfig() {
 
 func (config *databaseConfig) Dsn() string {
 	return fmt.Sprintf(
-		"%s:%s@(%s:%s)/%s?multiStatements=true&parseTime=true&loc=UTC&collation=utf8mb4_general_ci",
-		config.Username,
-		config.Password,
+		"host=%s port=%s user=%s dbname=%s password=%s sslmode=disable",
 		config.Host,
 		config.Port,
+		config.Username,
 		config.Name,
+		config.Password,
 	)
 }
 

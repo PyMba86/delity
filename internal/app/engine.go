@@ -14,7 +14,7 @@ import (
 	"github.com/pymba86/delity/pkg/log"
 	"github.com/pymba86/delity/pkg/router"
 
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq"
 )
 
 // Possible application states
@@ -75,7 +75,7 @@ func New() (*Engine, error) {
 
 	logger := log.New(os.Stderr, config.Log.Level)
 
-	database, err := db.New("mysql",
+	database, err := db.New("postgres",
 		config.Database.Dsn(), logger.WithPrefix("db"))
 
 	if err != nil {

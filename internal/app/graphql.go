@@ -3,7 +3,6 @@ package app
 import (
 	"github.com/pymba86/delity/internal/core"
 	"github.com/pymba86/delity/internal/graphql"
-	"github.com/pymba86/delity/internal/graphql/resolver"
 	"github.com/pymba86/delity/pkg/log"
 	"github.com/pymba86/delity/pkg/router"
 )
@@ -13,15 +12,7 @@ func GraphQLMuxHandleFunc(
 	logger log.Logger,
 ) func(r *router.Mux) {
 
-	c := graphql.Config{
-		Resolvers: &resolver.Resolver{
-			Services: services,
-			Log:      logger.WithPrefix("graphql"),
-		}}
-
-	schema := graphql.NewExecutableSchema(c)
-
-	query := graphql.NewServer(schema, logger)
+	query := graphql.New(services, logger)
 
 	return func(r *router.Mux) {
 

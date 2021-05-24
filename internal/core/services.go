@@ -6,7 +6,7 @@ import (
 )
 
 type Services struct {
-	User *user.Service
+	User user.Service
 }
 
 func NewServices(db *db.Connection) *Services {

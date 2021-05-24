@@ -9,12 +9,18 @@ schema:
 struct_tag: json
 
 exec:
-  filename: internal/graphql/graphql_gen.go
-  package: graphql
+  filename: internal/graphql/server/generated.go
+  package: server
 
 model:
-  filename: internal/graphql/models_gen.go
-  package: graphql
+  filename: internal/graphql/model/generated.go
+  package: model
+
+resolver:
+  layout: follow-schema
+  dir: internal/graphql/resolver
+  package: resolver
+  filename_template: "{name}.go"
 
 autobind:
   - github.com/pymba86/delity/internal/entity
