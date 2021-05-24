@@ -3,13 +3,13 @@ package user
 import (
 	"context"
 	"github.com/pkg/errors"
-	"github.com/pymba86/delity/internal/entity"
+	"github.com/pymba86/delity/internal/models"
 	"github.com/pymba86/delity/pkg/db"
 )
 
 type Store interface {
 	// Create saves a new user in the storage.
-	Create(ctx context.Context, user entity.User) (entity.User, error)
+	Create(ctx context.Context, user *models.User) (*models.User, error)
 }
 
 // Store handles the direct database access for this entity.
@@ -22,21 +22,21 @@ func NewStore(db *db.Connection) Store {
 	return &store{db: db}
 }
 
-func (s store) Create(ctx context.Context, user entity.User) (entity.User, error) {
+func (s store) Create(ctx context.Context, user *models.User) (*models.User, error) {
 
 	tx, err := s.db.Begin()
 
 	if err != nil {
-		return user, errors.WithStack(err)
+		return nil, errors.WithStack(err)
 	}
 
-	var u entity.User
+	u := &models.User{}
 
 	row := tx.QueryRowxContext(ctx,
-		"INSERT INTO users (name) VALUES (&1) RETURNING name;", user.Name)
+		"INSERT INTO users (name) VALUES (&1) RETURNING id, name", user.Name)
 
-	if row.StructScan(&u) != nil {
-		return user, db.RollbackError(tx, errors.WithStack(err))
+	if row.StructScan(u) != nil {
+		return nil, db.RollbackError(tx, errors.WithStack(err))
 	}
 
 	return u, errors.WithStack(tx.Commit())

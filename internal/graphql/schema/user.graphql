@@ -5,7 +5,7 @@ type User {
 }
 
 """Input to create or update a user"""
-input UserInput {
+input CreateUserInput {
     id: Int
     name: String!
 }

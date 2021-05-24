@@ -13,17 +13,14 @@ exec:
   package: server
 
 model:
-  filename: internal/graphql/model/generated.go
-  package: model
+  filename: internal/models/generated.go
+  package: models
 
 resolver:
   layout: follow-schema
   dir: internal/graphql/resolver
   package: resolver
   filename_template: "{name}.go"
-
-autobind:
-  - github.com/pymba86/delity/internal/entity
 
 models:
   ID:

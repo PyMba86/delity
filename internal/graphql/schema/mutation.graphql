@@ -1,4 +1,4 @@
 type Mutation {
     """Create a new user"""
-    createUser(input: UserInput!): User!
+    createUser(input: CreateUserInput!): User!
 }

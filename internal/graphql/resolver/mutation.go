@@ -5,20 +5,14 @@ package resolver
 
 import (
 	"context"
-	"github.com/pymba86/delity/internal/user"
 
-	"github.com/pymba86/delity/internal/entity"
-	"github.com/pymba86/delity/internal/graphql/model"
 	"github.com/pymba86/delity/internal/graphql/server"
+	"github.com/pymba86/delity/internal/models"
 )
 
-func (r *mutationResolver) CreateUser(ctx context.Context, input model.UserInput) (*entity.User, error) {
-
-	u, err := r.Services.User.Create(ctx, user.CreateUserParams{
-		Name: "",
-	})
-
-	return &u, err
+func (r *mutationResolver) CreateUser(ctx context.Context, input models.CreateUserInput) (*models.User, error) {
+	// TODO validation input
+	return r.Services.User.Create(ctx, &input)
 }
 
 // Mutation returns server.MutationResolver implementation.

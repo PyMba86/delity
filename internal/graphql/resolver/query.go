@@ -7,11 +7,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/pymba86/delity/internal/entity"
 	"github.com/pymba86/delity/internal/graphql/server"
+	"github.com/pymba86/delity/internal/models"
 )
 
-func (r *queryResolver) Users(ctx context.Context) ([]*entity.User, error) {
+func (r *queryResolver) Users(ctx context.Context) ([]*models.User, error) {
 	panic(fmt.Errorf("not implemented"))
 }
 
