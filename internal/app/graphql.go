@@ -16,14 +16,14 @@ func GraphQLMuxHandleFunc(
 
 	return func(r *router.Mux) {
 
-		r.Handle("/backend/graphql-playground",
-			graphql.NewPlaygroundHandler("/backend/query"))
+		r.Handle("/__graphql",
+			graphql.NewPlaygroundHandler("/graphql"))
 
-		r.Handle("/backend/query", query)
+		r.Handle("/graphql", query)
 
 		// Websocket endpoint. This is only used in dev as in prod
 		// the /ws prefix is handled by the proxy container and
 		// removed after the appropriate http headers have been set.
-		r.Handle("/ws/backend/query", query)
+		r.Handle("/ws/graphql", query)
 	}
 }
