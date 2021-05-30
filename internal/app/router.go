@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/cors"
-	"github.com/pymba86/delity/internal/core"
+	"github.com/pymba86/delity/internal/registry"
 	"github.com/pymba86/delity/pkg/log"
 	"github.com/pymba86/delity/pkg/router"
 	"io/ioutil"
@@ -125,7 +125,7 @@ func FrontendMuxHandleFunc(config *Config) func(r *router.Mux) {
 }
 
 // BackendMuxHandleFunc contains all backend routes
-func BackendMuxHandleFunc(services *core.Services) func(r *router.Mux) {
+func BackendMuxHandleFunc(services *registry.Services) func(r *router.Mux) {
 	return func(r *router.Mux) {
 		r.UseMiddleware(timeoutMiddleware(30 * time.Second))
 	}

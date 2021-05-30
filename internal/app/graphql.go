@@ -1,14 +1,14 @@
 package app
 
 import (
-	"github.com/pymba86/delity/internal/core"
 	"github.com/pymba86/delity/internal/graphql"
+	"github.com/pymba86/delity/internal/registry"
 	"github.com/pymba86/delity/pkg/log"
 	"github.com/pymba86/delity/pkg/router"
 )
 
 func GraphQLMuxHandleFunc(
-	services *core.Services,
+	services *registry.Services,
 	logger log.Logger,
 ) func(r *router.Mux) {
 

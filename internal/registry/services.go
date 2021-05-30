@@ -1,4 +1,4 @@
-package core
+package registry
 
 import (
 	"github.com/pymba86/delity/internal/user"

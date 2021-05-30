@@ -10,7 +10,7 @@ import (
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
-	"github.com/pymba86/delity/internal/core"
+	"github.com/pymba86/delity/internal/registry"
 	"github.com/pymba86/delity/internal/graphql/resolver"
 	"github.com/pymba86/delity/internal/graphql/server"
 	"github.com/pymba86/delity/pkg/log"
@@ -20,7 +20,7 @@ import (
 	"time"
 )
 
-func New(services *core.Services, logger log.Logger) *handler.Server {
+func New(services *registry.Services, logger log.Logger) *handler.Server {
 
 	c := server.Config{
 		Resolvers: &resolver.Resolver{

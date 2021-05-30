@@ -3,7 +3,7 @@ package app
 import (
 	"context"
 	"fmt"
-	"github.com/pymba86/delity/internal/core"
+	"github.com/pymba86/delity/internal/registry"
 	"net/http"
 	"os"
 	"sync"
@@ -47,7 +47,7 @@ type Engine struct {
 	state int
 
 	// Services contains all the application's services
-	services *core.Services
+	services *registry.Services
 
 	// Server hold a pointer to the http server
 	server *http.Server
@@ -86,7 +86,7 @@ func New() (*Engine, error) {
 	ctx, cancel := context.WithCancel(context.Background())
 
 	// Create all dependencies services
-	services := core.NewServices(database)
+	services := registry.NewServices(database)
 
 	// Create a router with all handlers
 	mux := NewRouter(logger,
