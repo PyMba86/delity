@@ -7,37 +7,25 @@ import (
 	"github.com/pymba86/delity/pkg/db"
 )
 
-type Store interface {
-	// Create saves a new user in the storage.
-	Create(ctx context.Context, user *models.User) (*models.User, error)
-}
-
 // Store handles the direct database access for this entity.
-type store struct {
+type Store struct {
 	db *db.Connection
 }
 
 // NewStore returns a new Store instance.
-func NewStore(db *db.Connection) Store {
-	return &store{db: db}
+func NewStore(db *db.Connection) *Store {
+	return &Store{db: db}
 }
 
-func (s store) Create(ctx context.Context, user *models.User) (*models.User, error) {
-
-	tx, err := s.db.Begin()
-
-	if err != nil {
-		return nil, errors.WithStack(err)
-	}
+func (s Store) Create(ctx context.Context, user *models.User) (*models.User, error) {
 
 	u := &models.User{}
 
-	row := tx.QueryRowxContext(ctx,
-		"INSERT INTO users (name) VALUES (&1) RETURNING id, name", user.Name)
+	row := s.db.QueryRowContext(ctx,
+		"INSERT INTO users(id, name) VALUES($1, $2) RETURNING id, name",
+		user.ID, user.Name)
 
-	if row.StructScan(u) != nil {
-		return nil, db.RollbackError(tx, errors.WithStack(err))
-	}
+	err := row.Scan(&u.ID, &u.Name)
 
-	return u, errors.WithStack(tx.Commit())
+	return u, errors.WithStack(err)
 }
