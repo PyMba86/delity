@@ -1,7 +1,7 @@
 import {createContext} from "react";
 import {createTheming} from "react-jss";
 import {DelityColorScheme, DelityTheme} from "./types";
-import {mergeColorScheme} from "../utils/theme/scheme";
+import {mergeColorScheme} from "../utils/theme/mergeColorScheme";
 
 const ThemeContext = createContext({});
 
