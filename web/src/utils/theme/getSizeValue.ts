@@ -12,5 +12,5 @@ export function getSizeValue(
         return size;
     }
 
-    return sizes[size] || size || defaultSize && sizes[defaultSize];
+    return sizes[size] || size || (defaultSize && sizes[defaultSize]);
 }

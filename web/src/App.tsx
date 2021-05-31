@@ -11,15 +11,20 @@ function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <div className="App">
-                <header className="App-header">
-                    <Button variant={'light'} style={{marginRight: 10}}>
-                        Сохранить
-                    </Button>
-                    <Button variant={'filled'} color={'red'}>
-                        Удалить
-                    </Button>
-                </header>
+            <div style={{
+                backgroundColor:
+                    theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+                minHeight: "100vh",
+                padding: theme.spacing.lg
+            }}>
+                <Button variant={'light'} style={{marginRight: 10}}
+                        onClick={() => setColorScheme('dark')}>
+                    Сохранить
+                </Button>
+                <Button variant={'filled'} color={'red'}
+                        onClick={() => setColorScheme('light')}>
+                    Удалить
+                </Button>
             </div>
         </ThemeProvider>
     );

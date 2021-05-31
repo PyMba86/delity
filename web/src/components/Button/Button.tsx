@@ -1,6 +1,5 @@
 import {CommonProps, DelityNumberSize, DelitySize, useTheme} from "../../theme";
-import React from "react";
-import {ComponentPassThrough} from "../../types";
+import React, {ButtonHTMLAttributes} from "react";
 import useStyles from './Button.styles';
 import cx from 'clsx';
 import {DelityColorKeys} from "../../theme/colors";
@@ -31,8 +30,7 @@ export interface ButtonBaseProps extends CommonProps {
     variant?: 'link' | 'filled' | 'outline' | 'light';
 }
 
-export function Button<T extends React.ElementType = 'button',
-    U extends HTMLElement = HTMLButtonElement>(
+export function Button(
     {
         className,
         size = 'md',
@@ -45,15 +43,11 @@ export function Button<T extends React.ElementType = 'button',
         fullWidth = false,
         variant = 'filled',
         radius = 'sm',
-        component: Element = 'button',
-        elementRef,
         colorScheme,
         ...props
-    }: ComponentPassThrough<T, ButtonBaseProps> & {
-        elementRef?: React.ForwardedRef<U>
-    }) {
+    }: ButtonBaseProps & ButtonHTMLAttributes<HTMLButtonElement>) {
 
-    const classes = useStyles({
+    const classes = useStyles(colorScheme, {
         radius,
         color,
         size,
@@ -62,11 +56,10 @@ export function Button<T extends React.ElementType = 'button',
     });
 
     return (
-        <Element {...props}
-                 className={cx(classes.shared, classes[variant], className)}
-                 type={type}
-                 disabled={disabled}
-                 ref={elementRef}>
+        <button {...props}
+                className={cx(classes.shared, classes[variant], className)}
+                type={type}
+                disabled={disabled}>
             <div className={classes.inner}>
                 {leftIcon && (
                     <span className={cx(classes.icon, classes.leftIcon)}>
@@ -78,8 +71,12 @@ export function Button<T extends React.ElementType = 'button',
                     {children}
                 </span>
 
+                {rightIcon && (
+                    <span className={cx(classes.icon, classes.rightIcon)}>
+                        {rightIcon}
+                    </span>
+                )}
             </div>
-        </Element>
+        </button>
     )
-
 }

@@ -1,5 +1,5 @@
 import {createUseStyles, Styles} from 'react-jss';
-import {DelityTheme} from "./types";
+import {DelityColorScheme, DelityTheme} from "./types";
 import {useMemo} from "react";
 
 export function createMemoStyles<C extends string = string, Props = unknown>(
@@ -7,14 +7,15 @@ export function createMemoStyles<C extends string = string, Props = unknown>(
 ) {
     const useStyles = createUseStyles<C, Props, DelityTheme>(styles);
 
-    return function useMemoStyles(args?: Props) {
+    return function useMemoStyles(colorScheme?: DelityColorScheme, args?: Props) {
         const dependencies =
             typeof args === 'object' && args !== null
                 ? (Object.keys(args) as Array<keyof Props>)
                     .map(key => args[key])
                 : [];
 
-        const stylesProps = useMemo(() => args, dependencies);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const stylesProps = useMemo(() => args, [...dependencies, colorScheme]);
 
         return useStyles(stylesProps);
     }

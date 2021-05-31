@@ -2,7 +2,6 @@ import {DelityTheme} from "../../theme";
 
 
 export function getFocusStyles(theme: DelityTheme) {
-    console.log(theme);
     return {
         '&:focus': {
             outline: 'none',
