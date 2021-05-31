@@ -5,6 +5,7 @@ export const theme: DelityTheme = {
     colorScheme: 'light',
     white: '#fff',
     black: '#000',
+    primary: 'blue',
     colors: colors,
     lineHeight: 1.4,
     fontFamily:

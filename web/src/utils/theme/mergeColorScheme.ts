@@ -1,5 +1,4 @@
-import {DelityColorScheme, DelityTheme} from "../../theme/types";
-
+import {DelityColorScheme, DelityTheme} from "../../theme";
 
 export function mergeColorScheme(
     currentTheme: DelityTheme,

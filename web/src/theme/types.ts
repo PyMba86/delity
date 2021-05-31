@@ -1,5 +1,6 @@
 import {CSSProperties} from "react";
-import {DeepPartial, Tuple} from "../types";
+import {DeepPartial} from "../types";
+import {DelityColorKeys, DelityColors} from "./colors";
 
 export type DelitySize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -19,10 +20,12 @@ export interface DelityTheme {
     colorScheme: DelityColorScheme;
     white: string;
     black: string;
-    colors: Record<string, Tuple<string, 10>>;
+    primary: DelityColorKeys;
+    colors: DelityColors;
     fontFamily: CSSProperties['fontFamily'];
     lineHeight: CSSProperties['lineHeight'];
     fontFamilyMonospace: CSSProperties['fontFamily'];
+
     fontSizes: DelitySizes;
     radius: DelitySizes;
     spacing: DelitySizes;
@@ -44,3 +47,9 @@ export interface DelityTheme {
 }
 
 export type DelityThemeOverride = DeepPartial<DelityTheme>;
+
+export interface CommonProps {
+    className?: string;
+    style?: CSSProperties;
+    colorScheme?: DelityColorScheme;
+}

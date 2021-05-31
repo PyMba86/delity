@@ -1,6 +1,8 @@
-import {DelityTheme} from "./types";
+export type DelityColors = typeof colors;
 
-export const colors: DelityTheme['colors'] = {
+export type DelityColorKeys = keyof typeof colors;
+
+export const colors = {
 
     dark: [
         '#d5d7e0',
