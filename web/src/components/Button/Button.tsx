@@ -47,12 +47,14 @@ export function Button(
         ...props
     }: ButtonBaseProps & ButtonHTMLAttributes<HTMLButtonElement>) {
 
+    const theme = useTheme(colorScheme);
+
     const classes = useStyles(colorScheme, {
         radius,
         color,
         size,
         fullWidth,
-        theme: useTheme(colorScheme)
+        theme
     });
 
     return (
@@ -60,6 +62,7 @@ export function Button(
                 className={cx(classes.shared, classes[variant], className)}
                 type={type}
                 disabled={disabled}>
+
             <div className={classes.inner}>
                 {leftIcon && (
                     <span className={cx(classes.icon, classes.leftIcon)}>

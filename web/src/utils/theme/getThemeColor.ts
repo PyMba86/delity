@@ -11,8 +11,5 @@ export function getThemeColor(
         color?: DelityColorKeys;
         shade: number;
     }) {
-
-    const primaryShades = theme.colors[theme.primary];
-
-    return color ? theme.colors[color][shade] : primaryShades[shade];
+    return color ? theme.colors[color][shade] : theme.colors[theme.primary][shade];
 }

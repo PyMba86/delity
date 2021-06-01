@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {DelityColorScheme, ThemeProvider, useTheme} from "./theme";
-import {Button} from "./components/Button/Button";
+import {Button} from "./components/Button";
+import {Avatar} from "./components/Avatar";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                 minHeight: "100vh",
                 padding: theme.spacing.lg
             }}>
+                <Avatar color="red">VR</Avatar>
                 <Button variant={'light'} style={{marginRight: 10}}
                         onClick={() => setColorScheme('dark')}>
                     Сохранить
