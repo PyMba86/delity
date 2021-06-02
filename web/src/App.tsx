@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {DelityColorScheme, ThemeProvider, useTheme} from "./theme";
 import {Button} from "./components/Button";
 import {Avatar} from "./components/Avatar";
+import {Text} from "./components/Text";
+import {Title} from "./components/Title";
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
                 padding: theme.spacing.lg
             }}>
                 <Avatar color="red">VR</Avatar>
+                <Title order={1}>delity application</Title>
+                <Text weight={700}>Light and fast management</Text>
                 <Button variant={'light'} style={{marginRight: 10}}
                         onClick={() => setColorScheme('dark')}>
                     Сохранить

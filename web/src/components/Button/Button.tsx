@@ -1,10 +1,11 @@
 import {CommonProps, DelityNumberSize, DelitySize, useTheme} from "../../theme";
-import React, {ButtonHTMLAttributes} from "react";
+import React from "react";
 import useStyles from './Button.styles';
 import cx from 'clsx';
 import {DelityColorKeys} from "../../theme/colors";
+import {ComponentPassThrough} from "../../types";
 
-export interface ButtonBaseProps extends CommonProps {
+export interface ButtonBaseProps<U> extends CommonProps {
     /** Predefined button size */
     size?: DelitySize;
 
@@ -30,13 +31,17 @@ export interface ButtonBaseProps extends CommonProps {
     variant?: 'link' | 'filled' | 'outline' | 'light';
 }
 
-export function Button(
+export const ButtonElementType = 'button';
+
+export function Button<T extends React.ElementType = typeof ButtonElementType,
+    U extends HTMLElement = HTMLButtonElement>(
     {
         className,
         size = 'md',
         color,
         type = 'button',
         disabled = false,
+        component,
         children,
         leftIcon,
         rightIcon,
@@ -44,8 +49,9 @@ export function Button(
         variant = 'filled',
         radius = 'sm',
         colorScheme,
+        elementRef,
         ...props
-    }: ButtonBaseProps & ButtonHTMLAttributes<HTMLButtonElement>) {
+    }: ComponentPassThrough<T, ButtonBaseProps<U>>) {
 
     const theme = useTheme(colorScheme);
 
@@ -57,11 +63,13 @@ export function Button(
         theme
     });
 
+    const Element = component || ButtonElementType;
+
     return (
-        <button {...props}
-                className={cx(classes.shared, classes[variant], className)}
-                type={type}
-                disabled={disabled}>
+        <Element {...props}
+                 className={cx(classes.shared, classes[variant], className)}
+                 type={type}
+                 disabled={disabled}>
 
             <div className={classes.inner}>
                 {leftIcon && (
@@ -80,6 +88,6 @@ export function Button(
                     </span>
                 )}
             </div>
-        </button>
+        </Element>
     )
 }
