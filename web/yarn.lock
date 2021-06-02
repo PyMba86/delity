@@ -6923,7 +6923,7 @@ jss-plugin-vendor-prefixer@10.6.0:
     css-vendor "^2.0.8"
     jss "10.6.0"
 
-jss-preset-default@10.6.0:
+jss-preset-default@10.6.0, jss-preset-default@^10.6.0:
   version "10.6.0"
   resolved "https://registry.yarnpkg.com/jss-preset-default/-/jss-preset-default-10.6.0.tgz#b5471858adede57efd8d139c85dd44601b55dc94"
   integrity sha512-TuHDZiuxGLLJ/LIMLAzO5uf2PnLOCR6yF5GHQLPp59YTascmwEldJfR0tuqjKa8B2F/v708ZvzE1Dw0Ao7UIcA==

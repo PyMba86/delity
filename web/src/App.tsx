@@ -5,33 +5,19 @@ import {Avatar} from "./components/Avatar";
 import {Text} from "./components/Text";
 import {Title} from "./components/Title";
 import {Col, Grid} from "./components/Grid";
-import {JssProvider, SheetsRegistry} from "react-jss";
-import jss from 'jss';
-import globalPlugin from 'jss-plugin-global';
+import {createUseStyles, JssProvider} from "react-jss";
+import {create} from 'jss';
+import preset from 'jss-preset-default';
 
+const jss = create(preset());
 
-const setupJss = () => {
-
-    jss.use(globalPlugin());
-
-    const sheetsRegistry = new SheetsRegistry();
-
-    const globalStyleSheet = jss.createStyleSheet(
-        {
-            '@global': {
-                body: {
-                    margin: 0
-                }
-            }
+const useStyles = createUseStyles({
+    '@global': {
+        body: {
+            margin: 0
         }
-    ).attach();
-
-    sheetsRegistry.add(globalStyleSheet);
-
-    return sheetsRegistry;
-}
-
-const sheets = setupJss();
+    }
+});
 
 function App() {
 
@@ -40,9 +26,10 @@ function App() {
 
     const theme = useTheme(colorScheme, true);
 
+    useStyles();
 
     return (
-        <JssProvider registry={sheets}>
+        <JssProvider jss={jss}>
             <ThemeProvider theme={theme}>
                 <div style={{
                     backgroundColor:
