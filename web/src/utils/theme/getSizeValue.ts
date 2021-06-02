@@ -5,12 +5,12 @@ export function getSizeValue(
         defaultSize
     }: {
         size: string | number;
-        sizes: Record<string, string | number>;
+        sizes: Record<string, number>;
         defaultSize?: string
-    }) {
+    }): number {
     if (typeof size === 'number') {
         return size;
     }
 
-    return sizes[size] || size || (defaultSize && sizes[defaultSize]) || 0;
+    return sizes[size] || (defaultSize && sizes[defaultSize]) || 0;
 }
