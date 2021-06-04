@@ -5,6 +5,8 @@ export function getFontStyles(theme: DelityTheme): CSSProperties {
     return {
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
-        fontFamily: theme.fontFamily || 'sans-serif'
+        fontFamily: theme.fontFamily || 'sans-serif',
+        boxSizing: 'border-box',
+        WebkitTextSizeAdjust: '100%',
     }
 }

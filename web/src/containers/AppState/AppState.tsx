@@ -1,7 +1,6 @@
 import AppState, {initialAppState} from "./state";
 import React from "react";
 import appStateReducer, {AppStateActionTypes} from "./reducer";
-import useRouter from "use-react-router";
 
 export type AppStateContextType = [
     AppState,
@@ -18,7 +17,6 @@ const AppStateProvider: React.FC = (
         children
     }
 ) => {
-    const {location} = useRouter();
 
     const stateAndDispatch = React.useReducer(appStateReducer, initialAppState);
 
@@ -34,7 +32,7 @@ const AppStateProvider: React.FC = (
                 }
             })
         }
-    }, [location]);
+    }, []);
 
     return (
         <AppStateContext.Provider value={stateAndDispatch}>

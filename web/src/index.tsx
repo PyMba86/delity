@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {JssProvider} from "react-jss";
+import {create} from 'jss';
+import preset from 'jss-preset-default';
+import {AppLayout} from "./components/AppLayout";
+import {AppThemeProvider} from "./components/AppTheme";
+
+const jss = create(preset());
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <JssProvider jss={jss}>
+            <AppThemeProvider>
+                <AppLayout/>
+            </AppThemeProvider>
+        </JssProvider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

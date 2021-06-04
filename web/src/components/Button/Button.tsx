@@ -29,6 +29,8 @@ export interface ButtonBaseProps<U> extends CommonProps {
 
     /** Controls button appearance */
     variant?: 'link' | 'filled' | 'outline' | 'light';
+
+    children?: React.ReactNode;
 }
 
 export const ButtonElementType = 'button';
