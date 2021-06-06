@@ -1,16 +1,16 @@
 export {createMemoStyles} from './styles';
 
 export type {
-    DelityTheme,
-    DelityColorScheme,
-    DelityNumberSize,
-    DelitySize,
-    DelitySizes,
-    DelityThemeOverride,
+    Theme,
+    ThemeColorScheme,
+    ThemeNumberSize,
+    ThemeSize,
+    ThemeSizes,
+    ThemeOverride,
     CommonProps
 } from './types';
 
-export {theme} from './theme';
+export {defaultTheme} from './theme';
 
 export {
     theming,

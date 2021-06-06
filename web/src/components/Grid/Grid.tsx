@@ -1,4 +1,4 @@
-import {CommonProps, DelityNumberSize, useTheme} from "../../theme";
+import {CommonProps, ThemeNumberSize, useTheme} from "../../theme";
 import React, {Children} from "react";
 import {getSizeValue} from "../../utils/theme/getSizeValue";
 
@@ -7,7 +7,7 @@ export interface GridProps extends CommonProps, React.ComponentPropsWithoutRef<'
     children: React.ReactNode;
 
     /** Spacing between columns */
-    gutter?: DelityNumberSize;
+    gutter?: ThemeNumberSize;
 
     /** Should columns in the last row take 100% */
     grow?: boolean;

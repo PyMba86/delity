@@ -1,5 +1,5 @@
-import {createMemoStyles, DelityNumberSize, DelitySize, DelityTheme} from "../../theme";
-import {DelityColorKeys} from "../../theme/colors";
+import {createMemoStyles, ThemeNumberSize, ThemeSize, Theme} from "../../theme";
+import {ThemeColorKeys} from "../../theme/colors";
 import {getFocusStyles} from "../../utils/theme";
 import {getFontStyles} from "../../utils/theme/getFontStyles";
 import {getSizeValue} from "../../utils/theme/getSizeValue";
@@ -8,10 +8,10 @@ import {getThemeColor} from "../../utils/theme/getThemeColor";
 
 
 interface BadgeStylesProps {
-    color?: DelityColorKeys;
-    theme: DelityTheme;
-    size: DelitySize;
-    radius: DelityNumberSize;
+    color?: ThemeColorKeys;
+    theme: Theme;
+    size: ThemeSize;
+    radius: ThemeNumberSize;
     fullWidth: boolean;
 }
 

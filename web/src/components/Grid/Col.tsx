@@ -1,4 +1,4 @@
-import {CommonProps, DelityNumberSize, useTheme} from "../../theme";
+import {CommonProps, ThemeNumberSize, useTheme} from "../../theme";
 import React from "react";
 import {getSizeValue} from "../../utils/theme/getSizeValue";
 
@@ -10,7 +10,7 @@ export interface ColProps extends CommonProps, React.ComponentPropsWithoutRef<'d
     span: number;
     columns?: number;
     offset?: number;
-    gutter?: DelityNumberSize;
+    gutter?: ThemeNumberSize;
     grow?: boolean;
 }
 

@@ -1,9 +1,9 @@
-import {DelityColorScheme, DelityTheme} from "../../theme";
+import {ThemeColorScheme, Theme} from "../../theme";
 
 export function mergeColorScheme(
-    currentTheme: DelityTheme,
-    colorScheme?: DelityColorScheme
-): DelityTheme {
+    currentTheme: Theme,
+    colorScheme?: ThemeColorScheme
+): Theme {
 
     return colorScheme ? {...currentTheme, colorScheme} : currentTheme;
 }

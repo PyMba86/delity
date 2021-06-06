@@ -1,7 +1,7 @@
-import {CommonProps, DelitySize, useTheme} from "../../theme";
+import {CommonProps, ThemeSize, useTheme} from "../../theme";
 import React from "react";
 import cx from "clsx";
-import {DelityColorKeys} from "../../theme/colors";
+import {ThemeColorKeys} from "../../theme/colors";
 import useStyles, {TextVariant} from "./Text.styles";
 import {ComponentPassThrough} from "../../types";
 
@@ -10,10 +10,10 @@ export interface TextProps extends CommonProps {
     children?: React.ReactNode;
 
     /** font-size */
-    size?: DelitySize;
+    size?: ThemeSize;
 
     /** Text color from theme */
-    color?: DelityColorKeys;
+    color?: ThemeColorKeys;
 
     /** font-weight */
     weight?: React.CSSProperties['fontWeight'];

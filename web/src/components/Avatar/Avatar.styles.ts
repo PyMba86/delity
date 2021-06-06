@@ -1,11 +1,11 @@
-import {createMemoStyles, DelityNumberSize, DelityTheme} from "../../theme";
-import {DelityColorKeys} from "../../theme/colors";
+import {createMemoStyles, ThemeNumberSize, Theme} from "../../theme";
+import {ThemeColorKeys} from "../../theme/colors";
 import {getSizeValue} from "../../utils/theme/getSizeValue";
 import {getFontStyles} from "../../utils/theme/getFontStyles";
 import {getThemeColor} from "../../utils/theme/getThemeColor";
 import {hexToRgba} from "../../utils/theme/hexToRgba";
 
-export const sizes: Record<DelityNumberSize, number> = {
+export const sizes: Record<ThemeNumberSize, number> = {
     xs: 16,
     sm: 26,
     md: 38,
@@ -14,10 +14,10 @@ export const sizes: Record<DelityNumberSize, number> = {
 };
 
 interface AvatarStylesProps {
-    size: DelityNumberSize;
-    radius: DelityNumberSize;
-    theme: DelityTheme;
-    color: DelityColorKeys;
+    size: ThemeNumberSize;
+    radius: ThemeNumberSize;
+    theme: Theme;
+    color: ThemeColorKeys;
 }
 
 export default createMemoStyles({

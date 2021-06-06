@@ -1,35 +1,36 @@
 import {CSSProperties} from "react";
 import {DeepPartial} from "../types";
-import {DelityColorKeys, DelityColors} from "./colors";
+import {ThemeColorKeys, ThemeColors} from "./colors";
+import {Breakpoints} from "./breakpoints";
 
-export type DelitySize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export type DelityNumberSize = DelitySize | number;
+export type ThemeNumberSize = ThemeSize | number;
 
 type HeadingStyle = {
     readonly fontSize: CSSProperties['fontSize'];
     readonly lineHeight: CSSProperties['lineHeight'];
 }
 
-export type DelitySizes = Record<DelitySize, number>;
+export type ThemeSizes = Record<ThemeSize, number>;
 
-export type DelityColorScheme = 'light' | 'dark';
+export type ThemeColorScheme = 'light' | 'dark';
 
-export interface DelityTheme {
+export interface Theme {
 
-    colorScheme: DelityColorScheme;
+    colorScheme: ThemeColorScheme;
     white: string;
     black: string;
-    primary: DelityColorKeys;
-    colors: DelityColors;
+    primary: ThemeColorKeys;
+    colors: ThemeColors;
     fontFamily: CSSProperties['fontFamily'];
     lineHeight: CSSProperties['lineHeight'];
     fontFamilyMonospace: CSSProperties['fontFamily'];
 
-    fontSizes: DelitySizes;
-    radius: DelitySizes;
-    spacing: DelitySizes;
-    shadows: Record<DelitySize, string>;
+    fontSizes: ThemeSizes;
+    radius: ThemeSizes;
+    spacing: ThemeSizes;
+    shadows: Record<ThemeSize, string>;
 
     headings: {
         fontFamily: CSSProperties['fontFamily'];
@@ -43,13 +44,15 @@ export interface DelityTheme {
             h5: HeadingStyle;
             h6: HeadingStyle;
         }
-    }
+    },
+
+    breakpoints: Breakpoints;
 }
 
-export type DelityThemeOverride = DeepPartial<DelityTheme>;
+export type ThemeOverride = DeepPartial<Theme>;
 
 export interface CommonProps {
     className?: string;
     style?: CSSProperties;
-    colorScheme?: DelityColorScheme;
+    colorScheme?: ThemeColorScheme;
 }

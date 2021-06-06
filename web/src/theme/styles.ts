@@ -1,13 +1,13 @@
 import {createUseStyles, Styles} from 'react-jss';
-import {DelityColorScheme, DelityTheme} from "./types";
+import {ThemeColorScheme, Theme} from "./types";
 import {useMemo} from "react";
 
 export function createMemoStyles<C extends string = string, Props = unknown>(
-    styles: Styles<C, Props, DelityTheme>
+    styles: Styles<C, Props, Theme>
 ) {
-    const useStyles = createUseStyles<C, Props, DelityTheme>(styles);
+    const useStyles = createUseStyles<C, Props, Theme>(styles);
 
-    return function useMemoStyles(colorScheme?: DelityColorScheme, args?: Props) {
+    return function useMemoStyles(colorScheme?: ThemeColorScheme, args?: Props) {
         const dependencies =
             typeof args === 'object' && args !== null
                 ? (Object.keys(args) as Array<keyof Props>)

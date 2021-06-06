@@ -1,17 +1,17 @@
-import {createMemoStyles, DelityNumberSize, DelitySize, DelityTheme} from "../../theme";
+import {createMemoStyles, ThemeNumberSize, ThemeSize, Theme} from "../../theme";
 import {CSSProperties} from "react";
 import {getFocusStyles} from "../../utils/theme";
 import {getFontStyles} from "../../utils/theme/getFontStyles";
-import {DelityColorKeys} from "../../theme/colors";
+import {ThemeColorKeys} from "../../theme/colors";
 import {getSizeValue} from "../../utils/theme/getSizeValue";
 import {getThemeColor} from "../../utils/theme/getThemeColor";
 import {hexToRgba} from "../../utils/theme/hexToRgba";
 
 interface ButtonStylesProps {
-    color?: DelityColorKeys;
-    size: DelitySize;
-    radius: DelityNumberSize;
-    theme: DelityTheme;
+    color?: ThemeColorKeys;
+    size: ThemeSize;
+    radius: ThemeNumberSize;
+    theme: Theme;
     fullWidth: boolean;
 }
 

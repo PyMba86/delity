@@ -1,12 +1,12 @@
-import {createMemoStyles, DelityNumberSize, DelitySize, DelityTheme} from "../../theme";
+import {createMemoStyles, ThemeNumberSize, ThemeSize, Theme} from "../../theme";
 import {getSizeValue} from "../../utils/theme/getSizeValue";
 
 
 interface PaperStylesProps {
-    theme: DelityTheme;
-    radius: DelityNumberSize;
-    shadow?: DelitySize;
-    padding: DelityNumberSize;
+    theme: Theme;
+    radius: ThemeNumberSize;
+    shadow?: ThemeSize;
+    padding: ThemeNumberSize;
 }
 
 export default createMemoStyles({

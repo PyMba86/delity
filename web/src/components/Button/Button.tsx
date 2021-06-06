@@ -1,19 +1,19 @@
-import {CommonProps, DelityNumberSize, DelitySize, useTheme} from "../../theme";
+import {CommonProps, ThemeNumberSize, ThemeSize, useTheme} from "../../theme";
 import React from "react";
 import useStyles from './Button.styles';
 import cx from 'clsx';
-import {DelityColorKeys} from "../../theme/colors";
+import {ThemeColorKeys} from "../../theme/colors";
 import {ComponentPassThrough} from "../../types";
 
 export interface ButtonBaseProps<U> extends CommonProps {
     /** Predefined button size */
-    size?: DelitySize;
+    size?: ThemeSize;
 
     /** Button type attribute */
     type?: 'submit' | 'button' | 'reset';
 
     /** Button color from theme */
-    color?: DelityColorKeys;
+    color?: ThemeColorKeys;
 
     /** Adds icon before button label  */
     leftIcon?: React.ReactNode;
@@ -25,7 +25,7 @@ export interface ButtonBaseProps<U> extends CommonProps {
     fullWidth?: boolean;
 
     /** Button border-radius from theme or number to set border-radius in px */
-    radius?: DelityNumberSize;
+    radius?: ThemeNumberSize;
 
     /** Controls button appearance */
     variant?: 'link' | 'filled' | 'outline' | 'light';

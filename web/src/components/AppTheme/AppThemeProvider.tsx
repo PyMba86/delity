@@ -1,7 +1,7 @@
 import React, {createContext} from "react";
-import {ThemeProvider, useTheme} from "../../theme";
+import {defaultTheme, ThemeProvider, useTheme} from "../../theme";
 import {useLocalStorageValue} from "../../hooks/useLocalStorageValue";
-import useStyles from './AppTheme.styles';
+import {AppTheme} from "./AppTheme";
 
 export type AppColorScheme = 'light' | 'dark';
 
@@ -29,14 +29,14 @@ export const AppThemeProvider: React.FC<AppThemeProviderProps> = (
     const [colorScheme, setColorScheme]
         = useLocalStorageValue<AppColorScheme>(THEME_KEY, 'light');
 
-    const theme = useTheme(colorScheme, true);
-
-    useStyles(colorScheme, {theme});
+    const theme = useTheme(colorScheme, defaultTheme);
 
     return (
         <AppThemeContext.Provider value={{colorScheme, setColorScheme}}>
             <ThemeProvider theme={theme}>
-                {children}
+                <AppTheme>
+                    {children}
+                </AppTheme>
             </ThemeProvider>
         </AppThemeContext.Provider>
     )

@@ -1,10 +1,10 @@
-import {createMemoStyles, DelityTheme} from "../../theme";
+import {createMemoStyles, Theme} from "../../theme";
 import {getFontStyles} from "../../utils/theme/getFontStyles";
 
 export type HeadingElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 interface TitleStylesProps {
-    theme: DelityTheme;
+    theme: Theme;
     element: HeadingElement;
 }
 

@@ -1,7 +1,7 @@
-import {DelityTheme} from "../../theme";
+import {Theme} from "../../theme";
 
 
-export function getFocusStyles(theme: DelityTheme) {
+export function getFocusStyles(theme: Theme) {
     return {
         '&:focus': {
             outline: 'none',

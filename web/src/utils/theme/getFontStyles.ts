@@ -1,7 +1,7 @@
-import {DelityTheme} from "../../theme";
+import {Theme} from "../../theme";
 import {CSSProperties} from "react";
 
-export function getFontStyles(theme: DelityTheme): CSSProperties {
+export function getFontStyles(theme: Theme): CSSProperties {
     return {
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',

@@ -1,6 +1,6 @@
-import {CommonProps, DelityNumberSize, useTheme} from "../../theme";
+import {CommonProps, ThemeNumberSize, useTheme} from "../../theme";
 import React, {useEffect, useState} from "react";
-import {DelityColorKeys} from "../../theme/colors";
+import {ThemeColorKeys} from "../../theme/colors";
 import useStyles from './Avatar.styles';
 import cx from "clsx";
 import {PlaceholderIcon} from "../../icons/PlaceholderIcon";
@@ -14,13 +14,13 @@ export interface AvatarProps extends CommonProps, React.ComponentPropsWithoutRef
     alt?: string;
 
     /** Avatar width and height */
-    size?: DelityNumberSize;
+    size?: ThemeNumberSize;
 
     /** Predefined border-radius value */
-    radius?: DelityNumberSize;
+    radius?: ThemeNumberSize;
 
     /** Color from theme used for letter */
-    color?: DelityColorKeys;
+    color?: ThemeColorKeys;
 }
 
 export function Avatar(

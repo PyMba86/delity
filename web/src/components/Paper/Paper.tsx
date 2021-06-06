@@ -1,17 +1,17 @@
-import {CommonProps, DelityNumberSize, DelitySize, useTheme} from "../../theme";
+import {CommonProps, ThemeNumberSize, ThemeSize, useTheme} from "../../theme";
 import React from "react";
 import useStyles from './Paper.styles';
 import cx from "clsx";
 
 export interface PaperProps extends CommonProps, React.ComponentPropsWithoutRef<'div'> {
     /** Padding value */
-    padding?: DelityNumberSize;
+    padding?: ThemeNumberSize;
 
     /** box-shadow */
-    shadow?: DelitySize;
+    shadow?: ThemeSize;
 
     /** border-radius */
-    radius?: DelityNumberSize;
+    radius?: ThemeNumberSize;
 
     /** element ref */
     elementRef?: React.ForwardedRef<HTMLDivElement>;

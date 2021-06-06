@@ -1,5 +1,5 @@
-import {CommonProps, DelityNumberSize, DelitySize, useTheme} from "../../theme";
-import {DelityColorKeys} from "../../theme/colors";
+import {CommonProps, ThemeNumberSize, ThemeSize, useTheme} from "../../theme";
+import {ThemeColorKeys} from "../../theme/colors";
 import React from "react";
 import {ComponentPassThrough} from "../../types";
 import useStyles from './Badge.styles';
@@ -7,16 +7,16 @@ import cx from "clsx";
 
 export interface BadgeProps extends CommonProps {
     /** Badge color from theme */
-    color?: DelityColorKeys;
+    color?: ThemeColorKeys;
 
     /** Controls badge background */
     variant?: 'light' | 'filled' | 'outline' | 'dot';
 
     /** Defines badge height and font-size */
-    size?: DelitySize;
+    size?: ThemeSize;
 
     /** Predefined border-radius */
-    radius?: DelityNumberSize;
+    radius?: ThemeNumberSize;
 
     /** Sets badge width to 100% */
     fullWidth?: boolean;

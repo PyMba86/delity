@@ -1,12 +1,14 @@
-import {DelityTheme} from "./types";
+import {Theme} from "./types";
 import {colors} from "./colors";
+import {breakpoints} from "./breakpoints";
 
-export const theme: DelityTheme = {
+export const defaultTheme: Theme = {
     colorScheme: 'light',
     white: '#fff',
     black: '#000',
     primary: 'blue',
-    colors: colors,
+    breakpoints,
+    colors,
     lineHeight: 1.4,
     fontFamily:
         '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
@@ -54,12 +56,12 @@ export const theme: DelityTheme = {
             '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
         fontWeight: 700,
         sizes: {
-            h1: { fontSize: 34, lineHeight: 1.3 },
-            h2: { fontSize: 26, lineHeight: 1.35 },
-            h3: { fontSize: 22, lineHeight: 1.4 },
-            h4: { fontSize: 18, lineHeight: 1.45 },
-            h5: { fontSize: 16, lineHeight: 1.5 },
-            h6: { fontSize: 14, lineHeight: 1.5 },
+            h1: {fontSize: 34, lineHeight: 1.3},
+            h2: {fontSize: 26, lineHeight: 1.35},
+            h3: {fontSize: 22, lineHeight: 1.4},
+            h4: {fontSize: 18, lineHeight: 1.45},
+            h5: {fontSize: 16, lineHeight: 1.5},
+            h6: {fontSize: 14, lineHeight: 1.5},
         },
     },
 }

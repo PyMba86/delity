@@ -1,19 +1,19 @@
 import {createContext} from "react";
 import {createTheming} from "react-jss";
-import {DelityColorScheme, DelityTheme} from "./types";
+import {Theme, ThemeColorScheme} from "./types";
 import {mergeColorScheme} from "../utils/theme/mergeColorScheme";
-import {theme} from "./theme";
+import {defaultTheme} from "./theme";
 
-const ThemeContext = createContext({});
+const ThemeContext = createContext<Theme>(defaultTheme);
 
-export const theming = createTheming(ThemeContext);
+export const theming = createTheming<Theme>(ThemeContext);
 
 export const {ThemeProvider, useTheme: useTheming} = theming;
 
-export function useTheme(colorScheme?: DelityColorScheme, boot?: boolean): DelityTheme {
+export function useTheme(colorScheme?: ThemeColorScheme, theme?: Theme): Theme {
 
-    const internalTheme = {...useTheming<DelityTheme>()};
+    const internalTheme = {...useTheming<Theme>()};
 
     return mergeColorScheme(
-        boot ? theme : internalTheme, colorScheme);
+        theme ? theme : internalTheme, colorScheme);
 }

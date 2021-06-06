@@ -1,15 +1,15 @@
-import {createMemoStyles, DelitySize, DelityTheme} from "../../theme";
-import {DelityColorKeys} from "../../theme/colors";
+import {createMemoStyles, ThemeSize, Theme} from "../../theme";
+import {ThemeColorKeys} from "../../theme/colors";
 import {getFocusStyles} from "../../utils/theme";
 import {getFontStyles} from "../../utils/theme/getFontStyles";
 
 export type TextVariant = 'text' | 'link';
 
 interface TextStylesProps {
-    theme: DelityTheme;
-    color?: DelityColorKeys;
+    theme: Theme;
+    color?: ThemeColorKeys;
     variant: TextVariant;
-    size: DelitySize;
+    size: ThemeSize;
 }
 
 export default createMemoStyles({

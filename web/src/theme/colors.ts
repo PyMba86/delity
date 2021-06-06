@@ -1,6 +1,6 @@
-export type DelityColors = typeof colors;
+export type ThemeColors = typeof colors;
 
-export type DelityColorKeys = keyof typeof colors;
+export type ThemeColorKeys = keyof typeof colors;
 
 export const colors = {
 

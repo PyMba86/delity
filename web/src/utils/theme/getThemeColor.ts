@@ -1,5 +1,5 @@
-import {DelityTheme} from "../../theme";
-import {DelityColorKeys} from "../../theme/colors";
+import {Theme} from "../../theme";
+import {ThemeColorKeys} from "../../theme/colors";
 
 export function getThemeColor(
     {
@@ -7,8 +7,8 @@ export function getThemeColor(
         color,
         shade
     }: {
-        theme: DelityTheme;
-        color?: DelityColorKeys;
+        theme: Theme;
+        color?: ThemeColorKeys;
         shade: number;
     }) {
     return color ? theme.colors[color][shade] : theme.colors[theme.primary][shade];
