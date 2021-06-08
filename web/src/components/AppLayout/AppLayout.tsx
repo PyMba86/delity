@@ -1,15 +1,7 @@
-import React, {useContext} from "react";
-import {useAppState} from "../../hooks/useAppState";
-import {Col, Grid} from "../Grid";
-import {Avatar} from "../Avatar";
-import {Paper} from "../Paper";
-import {Title} from "../Title";
-import {Text} from "../Text";
-import {Badge} from "../Badge";
-import {Button} from "../Button";
-import {AppThemeContext} from "../AppTheme";
+import React, {useState} from "react";
 import useStyles from "./AppLayout.styles";
-import {Input} from "../Input";
+import {AppHeader} from "../AppHeader";
+import {Navbar} from "../Navbar";
 
 interface AppLayoutProps {
     children?: React.ReactNode;
@@ -20,46 +12,23 @@ export function AppLayout(
         children
     }: AppLayoutProps) {
 
-    const [appState, dispatchAppState] = useAppState();
-
-    const {setColorScheme} = useContext(AppThemeContext);
-
     const classes = useStyles();
 
+    const [navbarOpened, setNavbarState] = useState(false);
 
     return (
-        <div className={classes.root}>
-            <div className={classes.sidebar}/>
-            <div className={classes.mainPanel}>
-                <div className={classes.mainPanelContent}>
+        <div className={classes.layout}>
 
-                    <Grid justify={'center'}>
-                        <Col span={2}>
-                            <Avatar color="red">DT</Avatar>
-                        </Col>
-                        <Col span={10}>
-                            <Button variant={'light'} style={{marginRight: 10}}
-                                    onClick={() => setColorScheme('dark')}>
-                                Сохранить
-                            </Button>
-                            <Button variant={'filled'} color={'red'}
-                                    onClick={() => setColorScheme('light')}>
-                                Удалить
-                            </Button>
-                        </Col>
-                        <Col span={12}>
-                            <Paper padding={"md"} shadow="xs">
-                                <Title order={1}>delity application</Title>
-                                <Text>Light and fast management</Text>
-                                <Input   placeholder="Your email"/>
-                                <Badge color={'indigo'} size={'lg'} variant={'dot'}>Payments</Badge>
-                                {children}
-                            </Paper>
-                        </Col>
-                    </Grid>
+            <AppHeader navbarOpened={navbarOpened}
+                       toggleNavbar={() => setNavbarState(o => !o)}/>
+
+            <Navbar opened={navbarOpened} onClose={() => setNavbarState(false)}/>
+
+            <main className={classes.main}>
+                <div className={classes.content}>
+                    {children}
                 </div>
-            </div>
-
+            </main>
         </div>
     )
 }

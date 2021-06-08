@@ -58,11 +58,11 @@ export function createBreakpoints({unit, step, values}: BreakpointsOptions): Bre
 
 export const breakpoints: Breakpoints = createBreakpoints({
     values: {
-        xs: 0,
-        sm: 600,
-        md: 960,
-        lg: 1280,
-        xl: 1920,
+        xs: 570,
+        sm: 770,
+        md: 970,
+        lg: 1170,
+        xl: 1370,
     },
     unit: 'px',
     step: 5,
