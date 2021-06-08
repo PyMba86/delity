@@ -5,7 +5,7 @@ import cx from 'clsx';
 import {ThemeColorKeys} from "../../theme/colors";
 import {ComponentPassThrough} from "../../types";
 
-export interface ButtonBaseProps<U> extends CommonProps {
+export interface ButtonBaseProps extends CommonProps {
     /** Predefined button size */
     size?: ThemeSize;
 
@@ -35,8 +35,7 @@ export interface ButtonBaseProps<U> extends CommonProps {
 
 export const ButtonElementType = 'button';
 
-export function Button<T extends React.ElementType = typeof ButtonElementType,
-    U extends HTMLElement = HTMLButtonElement>(
+export function Button<T extends React.ElementType = typeof ButtonElementType>(
     {
         className,
         size = 'md',
@@ -51,9 +50,8 @@ export function Button<T extends React.ElementType = typeof ButtonElementType,
         variant = 'filled',
         radius = 'sm',
         colorScheme,
-        elementRef,
         ...props
-    }: ComponentPassThrough<T, ButtonBaseProps<U>>) {
+    }: ComponentPassThrough<T, ButtonBaseProps>) {
 
     const theme = useTheme(colorScheme);
 

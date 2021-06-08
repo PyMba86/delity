@@ -7,9 +7,9 @@ import {Title} from "../Title";
 import {Text} from "../Text";
 import {Badge} from "../Badge";
 import {Button} from "../Button";
-import {useTheme} from "../../theme";
 import {AppThemeContext} from "../AppTheme";
 import useStyles from "./AppLayout.styles";
+import {Input} from "../Input";
 
 interface AppLayoutProps {
     children?: React.ReactNode;
@@ -22,11 +22,10 @@ export function AppLayout(
 
     const [appState, dispatchAppState] = useAppState();
 
-    const {colorScheme, setColorScheme} = useContext(AppThemeContext);
-
-    const theme = useTheme(colorScheme);
+    const {setColorScheme} = useContext(AppThemeContext);
 
     const classes = useStyles();
+
 
     return (
         <div className={classes.root}>
@@ -52,6 +51,7 @@ export function AppLayout(
                             <Paper padding={"md"} shadow="xs">
                                 <Title order={1}>delity application</Title>
                                 <Text>Light and fast management</Text>
+                                <Input   placeholder="Your email"/>
                                 <Badge color={'indigo'} size={'lg'} variant={'dot'}>Payments</Badge>
                                 {children}
                             </Paper>
