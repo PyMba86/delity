@@ -1,14 +1,16 @@
 import {CommonProps, ThemeSize, useTheme} from "../../theme";
 import React from "react";
 import {ThemeColorKeys} from "../../theme/colors";
-import useStyles from './Alert.styles';
 import {Paper} from "../Paper";
 import cx from "clsx";
 import {Text} from "../Text";
+import useStyles from './Alert.styles';
 
-export interface AlertProps extends CommonProps, React.ComponentPropsWithoutRef<'div'> {
+export interface AlertProps extends CommonProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
+
     /** Optional alert title */
-    label?: React.ReactNode;
+    title?: React.ReactNode;
 
     /** Alert message */
     children: React.ReactNode;
@@ -24,10 +26,10 @@ export function Alert(
     {
         className,
         colorScheme,
-        label,
+        title,
         children,
         color,
-        shadow,
+        shadow = 'sm',
         ...props
     }: AlertProps) {
 
@@ -44,11 +46,11 @@ export function Alert(
             className={cx(classes.alert, className)}
             {...props}>
 
-            {label && (
+            {title && (
                 <Text colorScheme={colorScheme}
                       weight={700}
                       className={classes.label}>
-                    {label}
+                    {title}
                 </Text>
             )}
 
