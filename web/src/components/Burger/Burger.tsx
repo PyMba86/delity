@@ -3,6 +3,7 @@ import React from "react";
 import {ThemeColorKeys} from "../../theme/colors";
 import useStyles from './Burger.styles';
 import cx from "clsx";
+import {useReducedMotion} from "../../hooks/useReducedMotion";
 
 export interface BurgerProps extends CommonProps, React.ComponentPropsWithoutRef<'button'> {
     /** Burger state: true for cross, false for burger */
@@ -35,7 +36,7 @@ export function Burger(
         color,
         size,
         theme,
-        reduceMotion: false
+        reduceMotion: useReducedMotion()
     });
 
     return (
