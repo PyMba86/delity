@@ -64,4 +64,6 @@ export const defaultTheme: Theme = {
             h6: {fontSize: 14, lineHeight: 1.5},
         },
     },
+
+    transitionTimingFunction: 'cubic-bezier(.51,.3,0,1.21)',
 }

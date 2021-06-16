@@ -3,8 +3,9 @@ import {Transition as RTGTransition} from 'react-transition-group';
 import {TransitionName} from "./transitions";
 import {useReducedMotion} from "../../hooks/useReducedMotion";
 import {getTransitionStyles} from "./Transition.styles";
+import {CommonProps, useTheme} from "../../theme";
 
-export interface TransitionProps {
+export interface TransitionProps extends Omit<CommonProps, 'className'> {
     /** Predefined transition name or transition styles */
     transition: TransitionName;
 
@@ -43,8 +44,11 @@ export function Transition(
         onExit,
         onEnter,
         onEntered,
-        onExited
+        onExited,
+        colorScheme
     }: TransitionProps) {
+
+    const theme = useTheme(colorScheme);
 
     const reduceMotion = useReducedMotion();
 
@@ -67,7 +71,7 @@ export function Transition(
                     transition,
                     duration: reduceMotion ? 0 : duration,
                     state: transitionState,
-                    timingFunction: timingFunction
+                    timingFunction: timingFunction || theme.transitionTimingFunction
                 })
             )}
         </RTGTransition>
