@@ -1,6 +1,7 @@
 import {Renderable, RenderableMapping, RenderableValues, ResolvedType} from "./types";
 import {processStringToChildren} from "./processor";
-import React, {FunctionComponent, Fragment, ReactChild} from "react";
+import React, {Fragment, FunctionComponent, ReactChild} from "react";
+import {ExclusiveUnion} from "../../types";
 
 function errorOnMissingValues(token: string): never {
     throw new Error(
@@ -54,7 +55,7 @@ function lookupToken<T extends RenderableValues,
 
 interface LocaleTokenShape<T, D extends Renderable<T>> {
     token: string;
-    default: D;
+    defaultValue: D;
     children?: (x: ResolvedType<D>) => ReactChild;
     values?: T;
 }
@@ -65,3 +66,21 @@ interface LocaleTokensShape<T extends any[]> {
     children: (x: Array<T[number]>) => ReactChild;
 }
 
+export type LocaleProps<T,
+    D extends Renderable<T>,
+    A extends any[]> = ExclusiveUnion<LocaleTokenShape<T, D>, LocaleTokensShape<A>;
+
+
+const Locale = <T extends {},
+    D extends Renderable<T>,
+    A extends any[]>(
+    {
+        children,
+        values,
+        defaultValue,
+        token,
+        defaults,
+        tokens
+    }: LocaleProps<T, D, A>) => (
+
+)
