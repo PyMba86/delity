@@ -6,6 +6,7 @@ import {create} from 'jss';
 import preset from 'jss-preset-default';
 import {AppLayout} from "./components/AppLayout";
 import {AppThemeProvider} from "./components/AppTheme";
+import {AppLocaleProvider} from "./containers/AppLocale";
 
 const jss = create(preset());
 
@@ -13,7 +14,9 @@ ReactDOM.render(
     <React.StrictMode>
         <JssProvider jss={jss}>
             <AppThemeProvider>
-                <AppLayout/>
+                <AppLocaleProvider>
+                    <AppLayout/>
+                </AppLocaleProvider>
             </AppThemeProvider>
         </JssProvider>
     </React.StrictMode>,

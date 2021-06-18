@@ -42,9 +42,6 @@ export function processStringToChildren(
         } else if (hasPropName(value)) {
             // this won't be called, propName children are converted to a ReactChild before calling this
         } else {
-            if (mappingFunc !== undefined && typeof value === 'string') {
-                value = mappingFunc(value)
-            }
             children.push(value);
         }
     }

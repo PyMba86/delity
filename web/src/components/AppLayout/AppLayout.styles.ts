@@ -8,7 +8,7 @@ export default createUseStyles((theme: Theme) => ({
     main: {
         scrollMarginTop: HEADER_HEIGHT,
         flex: 1,
-        paddingTop: HEADER_HEIGHT - theme.spacing.xl - 2,
+        paddingTop: HEADER_HEIGHT,
         paddingBottom: theme.spacing.xl * 2
     },
     content: {
