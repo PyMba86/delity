@@ -4,9 +4,9 @@ import reportWebVitals from './reportWebVitals';
 import {JssProvider} from "react-jss";
 import {create} from 'jss';
 import preset from 'jss-preset-default';
-import {AppLayout} from "./components/AppLayout";
 import {AppThemeProvider} from "./components/AppTheme";
 import {AppLocaleProvider} from "./containers/AppLocale";
+import {Routes} from "./routes";
 
 const jss = create(preset());
 
@@ -15,7 +15,7 @@ ReactDOM.render(
         <JssProvider jss={jss}>
             <AppThemeProvider>
                 <AppLocaleProvider>
-                    <AppLayout/>
+                    <Routes/>
                 </AppLocaleProvider>
             </AppThemeProvider>
         </JssProvider>
