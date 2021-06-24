@@ -69,6 +69,7 @@ func (tx *Tx) ExecContext(ctx context.Context, query string, args ...interface{}
 
 	defer logQueryWithArgs(tx.Log, time.Now(), query, args)
 
+	// FIXME loop
 	r, err := tx.ExecContext(ctx, query, args...)
 
 	if err != nil {
