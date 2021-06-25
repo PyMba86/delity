@@ -1,6 +1,7 @@
 import React, {useRef, useState} from "react";
 import {TextInput} from "../TextInput";
 import {ActionIcon} from "../ActionIcon";
+import {PasswordToggleIcon} from "../../icons/PasswordToggleIcon";
 
 export interface PasswordInputProps
     extends Omit<React.ComponentPropsWithoutRef<typeof TextInput>, 'rightSection'> {
@@ -39,11 +40,11 @@ export function PasswordInput(
 
     const rightSection = (
         <ActionIcon
-        onClick={toggleReveal}
-        colorScheme={colorScheme}
-        title={reveal ? hidePasswordLabel : showPasswordLabel}
-        radius={radius}>
-            <div>icon</div>
+            onClick={toggleReveal}
+            colorScheme={colorScheme}
+            title={reveal ? hidePasswordLabel : showPasswordLabel}
+            radius={radius}>
+            <PasswordToggleIcon reveal={reveal}/>
         </ActionIcon>
     )
 
