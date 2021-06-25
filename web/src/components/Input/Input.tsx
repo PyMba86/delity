@@ -28,6 +28,9 @@ export interface InputProps extends CommonProps {
 
     /** Defines input appearance */
     variant?: 'default' | 'filled' | 'unstyled';
+
+    /** Get element ref */
+    elementRef?: React.ForwardedRef<HTMLInputElement>
 }
 
 export const InputElementType = 'input';
@@ -46,6 +49,7 @@ export function Input<T extends React.ElementType = typeof InputElementType>(
         inputClassName,
         inputStyle,
         colorScheme,
+        elementRef,
         ...props
     }: ComponentPassThrough<T, InputProps>) {
 
@@ -68,6 +72,7 @@ export function Input<T extends React.ElementType = typeof InputElementType>(
             )}
 
             <Element {...props}
+                     elementRef={elementRef}
                      aria-required={required}
                      aria-invalid={invalid}
                      className={cx({
