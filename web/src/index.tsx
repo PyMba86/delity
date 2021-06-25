@@ -7,17 +7,20 @@ import preset from 'jss-preset-default';
 import {AppThemeProvider} from "./components/AppTheme";
 import {AppLocaleProvider} from "./containers/AppLocale";
 import {Routes} from "./routes";
+import {BrowserRouter} from "react-router-dom";
 
 const jss = create(preset());
 
 ReactDOM.render(
     <React.StrictMode>
         <JssProvider jss={jss}>
-            <AppThemeProvider>
-                <AppLocaleProvider>
-                    <Routes/>
-                </AppLocaleProvider>
-            </AppThemeProvider>
+            <BrowserRouter>
+                <AppThemeProvider>
+                    <AppLocaleProvider>
+                        <Routes/>
+                    </AppLocaleProvider>
+                </AppThemeProvider>
+            </BrowserRouter>
         </JssProvider>
     </React.StrictMode>,
     document.getElementById('root')

@@ -4,6 +4,8 @@ import {ErrorBoundary} from "react-error-boundary";
 import {useAppState} from "../hooks/useAppState";
 import {useAppLocale} from "../hooks/useAppLocale";
 import {LoginLoading} from "../auth/components/LoginLoading";
+import {Switch} from "react-router-dom";
+import {AuthRouter} from "../auth";
 
 export function Routes() {
 
@@ -31,13 +33,15 @@ export function Routes() {
                             })
                         }
                         }>
-                        <div>12</div>
+                        <Switch>
+
+                        </Switch>
                     </ErrorBoundary>
                 </AppLayout>
             ) : appPageLoading ? (
                 <LoginLoading/>
             ) : (
-                <div>sad</div>
+                <AuthRouter/>
             )}
         </>
     )

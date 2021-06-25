@@ -48,4 +48,14 @@ export function PasswordInput(
         </ActionIcon>
     )
 
+    return (
+        <TextInput
+            {...props}
+            disabled={disabled}
+            colorScheme={colorScheme}
+            type={reveal ? 'text' : 'password'}
+            rightSection={disabled ? null : rightSection}
+            radius={radius}
+        />
+    )
 }
