@@ -48,7 +48,6 @@ export function TextInput(
             className={className}
             style={style}
             colorScheme={colorScheme}
-            {...props}
         >
             <Input<'input'>
                 {...props}

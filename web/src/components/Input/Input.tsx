@@ -14,6 +14,8 @@ export interface InputProps extends CommonProps {
     /** Right section of input, similar to icon but on the right */
     rightSection?: React.ReactNode;
 
+    rightSectionWidth?: number;
+
     /** Add className to input element */
     inputClassName?: string;
 
@@ -42,6 +44,7 @@ export function Input<T extends React.ElementType = typeof InputElementType>(
         invalid = false,
         required = false,
         variant = 'default',
+        rightSectionWidth = 36,
         icon,
         style,
         rightSection,
@@ -64,7 +67,7 @@ export function Input<T extends React.ElementType = typeof InputElementType>(
     return (
         <div className={cx(classes.inputWrapper, {
             [classes.invalid]: invalid,
-        }, classes[variant], className)} style={style} {...props}>
+        }, classes[variant], className)} style={style}>
             {icon && (
                 <div className={classes.icon}>
                     {icon}
@@ -72,16 +75,21 @@ export function Input<T extends React.ElementType = typeof InputElementType>(
             )}
 
             <Element {...props}
-                     elementRef={elementRef}
+                     ref={elementRef}
                      aria-required={required}
                      aria-invalid={invalid}
                      className={cx({
                          [classes.withIcon]: icon
                      }, classes.input, inputClassName)}
-                     style={inputStyle}/>
+                     style={{
+                         paddingRight: rightSection ? rightSectionWidth : theme.spacing.md,
+                         ...inputStyle,
+                     }}/>
 
             {rightSection && (
-                <div className={cx(classes.rightSection)}>
+                <div
+                    style={{ width: rightSectionWidth }}
+                    className={cx(classes.rightSection)}>
                     {rightSection}
                 </div>
             )}

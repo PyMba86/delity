@@ -1,0 +1,30 @@
+type Schema {
+    mutation: Mutation
+}
+
+type Mutation {
+    tokenCreate(email: String!, password: String!): CreateToken!
+    userCreate(input: UserCreateInput!): UserCreate!
+}
+
+interface Node {
+    id: ID!
+}
+
+type CreateToken {
+    token: String!
+    user: User!
+}
+
+type UserCreate {
+    user: User
+}
+
+input UserCreateInput {
+    email: String
+}
+
+type User implements Node {
+    id: ID!
+    email: String!
+}
