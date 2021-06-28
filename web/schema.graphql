@@ -21,10 +21,20 @@ type UserCreate {
 }
 
 input UserCreateInput {
-    email: String
+    email: String!
 }
 
 type User implements Node {
     id: ID!
     email: String!
+    userPermissions: [UserPermission!]!
+}
+
+type UserPermission {
+    code: PermissionEnum!
+    name: String!
+}
+
+enum PermissionEnum {
+    MANAGE_USERS
 }

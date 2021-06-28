@@ -3,6 +3,10 @@ import gql from "graphql-tag";
 export const fragmentUser = gql`
     fragment User on User {
         id
-        email
+        email,
+        userPermissions {
+            code
+            name
+        }
     }
 `;
