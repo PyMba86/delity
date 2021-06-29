@@ -1,6 +1,6 @@
-export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type ThemeBreakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export type BreakpointValues = { [key in Breakpoint]: number };
+export type BreakpointValues = { [key in ThemeBreakpoint]: number };
 
 export type BreakpointsOptions = {
     unit: string;
@@ -9,27 +9,28 @@ export type BreakpointsOptions = {
 };
 
 export interface Breakpoints {
-    up: (key: Breakpoint | number) => string;
-    down: (key: Breakpoint | number) => string;
-    between: (start: Breakpoint | number, end: Breakpoint | number) => string;
-    only: (key: Breakpoint) => string;
+    up: (key: ThemeBreakpoint | number) => string;
+    down: (key: ThemeBreakpoint | number) => string;
+    between: (start: ThemeBreakpoint | number, end: ThemeBreakpoint | number) => string;
+    only: (key: ThemeBreakpoint) => string;
+    width: (key: ThemeBreakpoint) => number;
 }
 
 export function createBreakpoints({unit, step, values}: BreakpointsOptions): Breakpoints {
 
-    const keys = Object.keys(values) as Array<Breakpoint>;
+    const keys = Object.keys(values) as Array<ThemeBreakpoint>;
 
-    function up(key: Breakpoint | number) {
+    function up(key: ThemeBreakpoint | number) {
         const value = typeof key === 'number' ? key : values[key];
         return `@media (min-width:${value}${unit})`;
     }
 
-    function down(key: Breakpoint | number) {
+    function down(key: ThemeBreakpoint | number) {
         const value = typeof key === 'number' ? key : values[key];
         return `@media (max-width:${value - step / 100}${unit})`;
     }
 
-    function between(start: Breakpoint | number, end: Breakpoint | number) {
+    function between(start: ThemeBreakpoint | number, end: ThemeBreakpoint | number) {
         return (
             `@media (min-width:${
                 typeof start === 'number' ? start : values[start]
@@ -40,7 +41,7 @@ export function createBreakpoints({unit, step, values}: BreakpointsOptions): Bre
         );
     }
 
-    function only(key: Breakpoint) {
+    function only(key: ThemeBreakpoint) {
         if (keys.indexOf(key) + 1 < keys.length) {
             return between(key, keys[keys.indexOf(key) + 1]);
         }
@@ -48,11 +49,16 @@ export function createBreakpoints({unit, step, values}: BreakpointsOptions): Bre
         return up(key);
     }
 
+    function width(key: ThemeBreakpoint) {
+        return values[key];
+    }
+
     return {
         up,
         down,
         between,
-        only
+        only,
+        width
     };
 }
 

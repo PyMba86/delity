@@ -4,13 +4,12 @@ export function getSizeValue(
         sizes,
         defaultSize
     }: {
-        size: string | number;
+        size?: string | number;
         sizes: Record<string, number>;
         defaultSize?: string
     }): number {
     if (typeof size === 'number') {
         return size;
     }
-
-    return sizes[size] || (defaultSize && sizes[defaultSize]) || 0;
+    return size ? (sizes[size] || (defaultSize && sizes[defaultSize]) || 0) : 0;
 }
