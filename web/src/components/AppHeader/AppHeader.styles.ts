@@ -20,6 +20,12 @@ export default createUseStyles((theme: Theme) => ({
         alignItems: 'center',
         justifyContent: 'space-between'
     },
+    container: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'nowrap'
+    },
     logo: {
         ...getFocusStyles(theme),
         paddingRight: theme.spacing.xs,
@@ -36,7 +42,9 @@ export default createUseStyles((theme: Theme) => ({
         display: 'flex',
         alignItems: 'center',
     },
-
+    item: {
+        marginRight: theme.spacing.xs,
+    },
     burger: {
         display: 'none',
 
@@ -44,7 +52,7 @@ export default createUseStyles((theme: Theme) => ({
             display: 'block',
         },
     },
-    mainSection: {
+    logoSection: {
         [theme.breakpoints.down("sm")]: {
             paddingRight: theme.spacing.xs,
             paddingLeft: theme.spacing.xs,
@@ -54,4 +62,18 @@ export default createUseStyles((theme: Theme) => ({
             position: 'relative',
         },
     },
+    mainSection: {
+        flex: 1,
+        marginLeft: theme.spacing.xl,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        paddingRight: theme.spacing.xs,
+    },
+    title: {
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        whiteSpace: 'nowrap'
+    }
 }), {theming});

@@ -11,6 +11,7 @@ interface ContainerStylesProps {
 export default createMemoStyles({
     container: ({size, padding, theme}: ContainerStylesProps) => ({
         maxWidth: size ? theme.breakpoints.width(size) : '100%',
+        width: '100%',
         marginLeft: 'auto',
         marginRight: 'auto',
         paddingLeft: getSizeValue(

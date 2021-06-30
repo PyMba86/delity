@@ -55,8 +55,7 @@ export default createMemoStyles({
     }),
 
     placeholderIcon: ({theme, color}: AvatarStylesProps) => ({
-        width: '70%',
-        height: '70%',
-        color: getThemeColor({theme, color, shade: theme.colorScheme === 'dark' ? 0 : 6})
+        color: getThemeColor(
+            {theme, color, shade: theme.colorScheme === 'dark' ? 0 : 6})
     })
 })

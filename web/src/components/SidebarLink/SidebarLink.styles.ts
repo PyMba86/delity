@@ -1,6 +1,7 @@
-import { createUseStyles } from 'react-jss';
+import {createUseStyles} from 'react-jss';
 import {Theme, theming} from "../../theme";
 import {getFocusStyles} from "../../utils/theme";
+import {getThemeColor} from "../../utils/theme/getThemeColor";
 
 export default createUseStyles(
     (theme: Theme) => ({
@@ -13,15 +14,18 @@ export default createUseStyles(
                 ? theme.colors.dark[1] : theme.colors.gray[7],
             fontWeight: 500,
             fontSize: theme.fontSizes.sm,
-            padding: 5,
-            marginLeft: -5,
-            marginRight: -5,
+            padding: 8,
             borderRadius: theme.radius.sm,
             userSelect: 'none',
 
-            '& + &': {
-                marginTop: 5,
-            },
+            '&:hover': {
+                backgroundColor: theme.colorScheme === 'dark' ? 'transparent' :
+                    getThemeColor({
+                        theme,
+                        color: 'gray',
+                        shade: 1
+                    })
+            }
         },
 
         active: {
@@ -32,8 +36,12 @@ export default createUseStyles(
         },
 
         body: {
-            marginLeft: theme.spacing.sm,
+            marginLeft: theme.spacing.xs,
         },
+        icon: {
+            width: 20,
+            height: 20
+        }
     }),
-    { theming }
+    {theming}
 );

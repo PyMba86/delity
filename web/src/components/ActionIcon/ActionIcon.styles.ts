@@ -127,7 +127,6 @@ export default createMemoStyles({
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
-        transition: 'color 100ms ease, background-color 100ms ease',
 
         '&:not(:disabled):active': {
             transform: 'translateY(1px)',

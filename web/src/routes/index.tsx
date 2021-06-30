@@ -4,8 +4,9 @@ import {ErrorBoundary} from "react-error-boundary";
 import {useAppState} from "../hooks/useAppState";
 import {useAppLocale} from "../hooks/useAppLocale";
 import {LoginLoading} from "../auth/components/LoginLoading";
-import {Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import {AuthRouter} from "../auth";
+import {HomeSection} from "../home";
 
 export function Routes() {
 
@@ -34,7 +35,7 @@ export function Routes() {
                         }
                         }>
                         <Switch>
-
+                            <Route exact={true} path={'/'} component={HomeSection}/>
                         </Switch>
                     </ErrorBoundary>
                 </AppLayout>
